@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Soufiane, AI Creative Strategist</title>
+  <meta name="description" content="Creative strategist weaponizing AI and strategy to build money-printing creatives for established ecommerce & DTC brands." />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <!-- ============================================================
+       FONTS — Distinctive pairing (no Inter/Poppins/Roboto/etc.)
+       Display: Clash Display (Fontshare) · Body: Satoshi (Fontshare)
+  ============================================================ -->
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link
+    href="https://api.fontshare.com/v2/css?f[]=clash-display@600,700,500,400&f[]=satoshi@400,500,700&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <!-- ============================================================
+       WEBGL VIDEO LAYER (three.js renders the scroll-scrubbed
+       video as a texture on a fullscreen plane). Stays fixed.
+  ============================================================ -->
+  <canvas id="webgl" aria-hidden="true"></canvas>
+
+  <!-- Cinematic gradient + vignette overlay for legibility -->
+  <div class="backdrop" aria-hidden="true"></div>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" aria-hidden="true"><span id="progressBar"></span></div>
+
+  <!-- ============================================================
+       NAVIGATION
+  ============================================================ -->
+  <header class="nav" id="nav">
+    <a href="#hero" class="nav__logo" aria-label="Home">
+      <img src="assets/logo-white-icon.png" alt="Logo" />
+    </a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#consulting">Consulting</a>
+    </nav>
+    <a href="#contact" class="btn btn--ghost nav__cta">Book a call</a>
+
+    <!-- Mobile menu shortcut (shown only on small screens) -->
+    <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu overlay -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu__links" aria-label="Mobile">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#work">Work</a>
+      <a href="#consulting">Consulting</a>
+    </nav>
+    <a href="#contact" class="btn btn--solid mobile-menu__cta">Book a call</a>
+  </div>
+
+  <!-- ============================================================
+       MAIN CONTENT — sections scroll over the pinned video
+  ============================================================ -->
+  <main>
+
+    <!-- ===== 1. HERO ===== -->
+    <section id="hero" class="section hero">
+      <div class="hero__inner">
+        <h1 class="hero__title">
+          <span class="line" data-reveal>I weaponize AI</span>
+          <span class="line" data-reveal>and strategy to build</span>
+          <span class="line line--accent" data-reveal>money-printing creatives.</span>
+        </h1>
+        <p class="hero__sub" data-reveal>
+          A creative strategist for established ecommerce &amp; DTC brands, turning
+          data, art direction and AI production into ads that actually move revenue.
+        </p>
+        <div class="hero__actions" data-reveal>
+          <a href="#contact" class="btn btn--solid">Book a consultation</a>
+          <a href="#work" class="btn btn--text">See the work →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== BRAND LOGO SLIDER (auto-marquee + manual arrows) ===== -->
+    <section id="brands" class="section brands" aria-label="Brands I've worked with">
+      <div class="wrap">
+        <p class="brands__label" data-reveal>Trusted by 30+ brands</p>
+      </div>
+
+      <div class="marquee" data-reveal>
+        <!-- Prev / next arrows for manual scrubbing -->
+        <button class="marquee__arrow marquee__arrow--prev" aria-label="Previous logos">‹</button>
+        <button class="marquee__arrow marquee__arrow--next" aria-label="Next logos">›</button>
+
+        <div class="marquee__viewport" id="marqueeViewport">
+          <!-- TRACK: brand logos (auto-duplicated in JS for a seamless loop).
+               To add/remove, just edit this list. Swap the generic alt text
+               for the real brand name for better accessibility/SEO. -->
+          <div class="marquee__track" id="marqueeTrack">
+            <span class="brand-logo"><img src="assets/brands/1.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/2.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/3.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/4.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/5.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/6.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/7.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/8.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/9.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/10.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/11.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/12.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/13.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/14.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/15.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/16.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/17.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/18.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/19.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/20.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/21.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/22.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/23.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/24.png" alt="Brand"></span>
+            <span class="brand-logo"><img src="assets/brands/25.png" alt="Brand"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 2. ABOUT / WHO I AM ===== -->
+    <section id="about" class="section about">
+      <div class="wrap grid-2">
+        <div class="about__label" data-reveal>
+          <span class="index">01</span>
+          <span class="kicker">Who I Am</span>
+        </div>
+        <div class="about__body">
+          <h2 class="h2" data-reveal>
+            I’m a creative strategist who treats every ad like a system, not a guess.
+          </h2>
+          <p class="lede" data-reveal>
+            <strong>Soufiane Bouadi.</strong> Six years in the trenches. 30+ brands scaled. I sit where creative, data and
+            AI collide, engineering concepts that win on the feed and hold up in the
+            dashboard. No fluff, no vanity metrics. Just creative built to print.
+          </p>
+          <ul class="stat-row" data-reveal>
+            <li><strong>6</strong><span>Years in the game</span></li>
+            <li><strong>30+</strong><span>Brands scaled</span></li>
+            <li><strong>∞</strong><span>Iterations tested</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. WHAT I DO / SERVICES ===== -->
+    <section id="services" class="section services">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="index" data-reveal>02</span>
+          <h2 class="h2" data-reveal>What I do</h2>
+          <p class="section-head__sub" data-reveal>
+            Four levers. Pulled in the right order, they compound.
+          </p>
+        </header>
+
+        <div class="cards">
+          <article class="card" data-reveal>
+            <span class="card__no">01</span>
+            <h3>Creative Strategy</h3>
+            <p>Data-driven ad concepts, angles, hooks and relentless iteration,
+              mapped to your funnel, not just to trends.</p>
+          </article>
+          <article class="card" data-reveal>
+            <span class="card__no">02</span>
+            <h3>AI Creative Production</h3>
+            <p>High-production UGC, cinematic spots and product showcases, the kind
+              of output that used to need a film crew, at a fraction of the cost.</p>
+          </article>
+          <article class="card" data-reveal>
+            <span class="card__no">03</span>
+            <h3>Creative Systems &amp; Team Building</h3>
+            <p>Repeatable pipelines and trained creative teams so the output keeps
+              flowing long after I’m gone.</p>
+          </article>
+          <article class="card" data-reveal>
+            <span class="card__no">04</span>
+            <h3>Copywriting &amp; Art Direction</h3>
+            <p>Brand voice, sharp copy and visual direction that makes the whole
+              system feel like one confident brand.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PORTFOLIO / WORK ===== -->
+    <section id="work" class="section work">
+      <div class="wrap">
+        <header class="section-head">
+          <span class="index" data-reveal>03</span>
+          <h2 class="h2" data-reveal>Creatives that convert.</h2>
+          <p class="section-head__sub" data-reveal>
+            AI-built ads, AI statics, and real human-shot videos. All built to perform.
+          </p>
+        </header>
+
+        <!-- PORTFOLIO GRID — first 4 are featured; the rest are shuffled.
+             Each card opens in the lightbox (videos play, statics enlarge).
+             Swap media by replacing files in assets/work/ + posters/. -->
+        <div class="gallery" id="gallery">
+          <button type="button" class="work-card" data-type="video" data-full="assets/work/ai_v05.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v05.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card" data-type="video" data-full="assets/work/ai_v07.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v07.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card" data-type="image" data-full="assets/work/ai_s11.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s11.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card" data-type="video" data-full="assets/work/ai_v12.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v12.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card" data-type="video" data-full="assets/work/old02.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/old02.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card" data-type="video" data-full="assets/work/hum_v12.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v12.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card" data-type="image" data-full="assets/work/ai_s05.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s05.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card" data-type="image" data-full="assets/work/ai_s06.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s06.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/ai_s01.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s01.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/old09.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/old09.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/ai_s02.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s02.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/ai_s07.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s07.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v10.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v10.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v15.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v15.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/old03.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/old03.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/old05.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/old05.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v07.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v07.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/ai_v11.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v11.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/ai_v01.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v01.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v01.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v01.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/ai_s10.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s10.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/ai_s03.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s03.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/old08.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/old08.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v03.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v03.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/ai_s13.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s13.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/old10.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/old10.jpg" alt="Human-Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v08.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v08.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/old01.jpg" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/old01.jpg" alt="Human-Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/ai_s09.jpg" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s09.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/ai_v02.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v02.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v14.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v14.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/ai_s08.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s08.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v09.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v09.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/ai_v10.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v10.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/old07.jpg" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/old07.jpg" alt="Human-Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v05.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v05.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v06.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v06.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/ai_v08.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v08.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/ai_v03.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v03.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/ai_s04.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s04.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v11.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v11.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/old06.jpg" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/old06.jpg" alt="Human-Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v16.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v16.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v02.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v02.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/ai_v09.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v09.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v13.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v13.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/ai_v06.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v06.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/ai_v04.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v04.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/old04.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/old04.jpg" alt="Human-Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/hum_v04.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/hum_v04.jpg" alt="Human-Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 8h3l1.5-2h7L17 8h3v11H4z"/><circle cx="12" cy="13" r="3.2"/></svg>Human-Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="video" data-full="assets/work/ai_v13.mp4" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_v13.jpg" alt="AI Made video creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>Video</span>
+            <span class="work-card__play"><svg viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></svg></span>
+          </button>
+          <button type="button" class="work-card is-hidden" data-type="image" data-full="assets/work/ai_s12.png" data-reveal>
+            <img class="work-card__media" src="assets/work/posters/ai_s12.jpg" alt="AI Made static creative" loading="lazy" />
+            <span class="work-badge work-badge--cat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7l1.9 6.4 6.4 1.9-6.4 1.9L12 18.3l-1.9-6.4L3.7 10l6.4-1.9z"/></svg>AI Made</span>
+            <span class="work-badge work-badge--type"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="4.5" width="17" height="15" rx="2"/><circle cx="9" cy="10" r="1.6"/><path d="M4 18l5-4 4 3 4-5 3 4"/></svg>Static</span>
+            
+          </button>
+        </div>
+
+        <div class="work-more">
+          <button class="btn btn--ghost" id="workMore" aria-expanded="false">Show more</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. CONSULTING / OFFER ===== -->
+    <section id="consulting" class="section consulting">
+      <div class="wrap grid-2">
+        <div class="consulting__label" data-reveal>
+          <span class="index">04</span>
+          <span class="kicker">The Offer</span>
+        </div>
+        <div class="consulting__body">
+          <h2 class="h2" data-reveal>Consulting that rewires your creative engine.</h2>
+          <p class="lede" data-reveal>
+            Work with me directly to install the strategy, the AI production pipeline and
+            the creative system that turns your ad account into a compounding asset.
+          </p>
+
+          <div class="offer-grid">
+            <div class="offer-col" data-reveal>
+              <h4>What you get</h4>
+              <ul class="ticks">
+                <li>Creative strategy audit &amp; angle map</li>
+                <li>AI production pipeline, built around your brand</li>
+                <li>Hook &amp; concept frameworks you keep</li>
+                <li>Team training &amp; creative ops</li>
+              </ul>
+            </div>
+            <div class="offer-col" data-reveal>
+              <h4>Who it’s for</h4>
+              <ul class="ticks">
+                <li>Established ecommerce &amp; DTC brands</li>
+                <li>Teams scaling paid spend</li>
+                <li>Founders tired of creative bottlenecks</li>
+                <li>Brands that want output <em>and</em> taste</li>
+              </ul>
+            </div>
+          </div>
+
+          <a href="#contact" class="btn btn--solid" data-reveal>Start the conversation</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 7. CTA / CONTACT ===== -->
+    <section id="contact" class="section contact">
+      <div class="wrap contact__inner">
+        <h2 class="contact__title" data-reveal>
+          Let’s build creative<br />that works for you.
+        </h2>
+        <p class="contact__sub" data-reveal>
+          Book a consultation and let’s map out your creative engine.
+        </p>
+
+        <div class="contact__actions" data-reveal>
+          <!-- Replace href with your Calendly / booking link -->
+          <a href="https://calendly.com/bouadisoufiane/30min" target="_blank" rel="noopener"
+             class="btn btn--solid btn--lg">Book on Calendly</a>
+        </div>
+
+        <!-- Contact form — submits to Web3Forms (emails bouadisoufiane@gmail.com).
+             JS in main.js intercepts for inline success/error; the action below
+             is a no-JS fallback. To use a different inbox, create a new key at
+             web3forms.com and replace the access_key value. -->
+        <form class="contact__form" data-reveal>
+          <!-- Web3Forms settings -->
+          <input type="hidden" name="access_key" value="a98e6d7e-f443-4035-8539-b1d71a4f6983" />
+          <input type="hidden" name="subject" value="New consultation request from your website" />
+          <input type="hidden" name="from_name" value="Soufiane Bouadi — Website" />
+          <!-- Honeypot spam filter (must stay hidden from humans) -->
+          <input type="checkbox" name="botcheck" class="hp" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <div class="field">
+            <input type="text" name="name" placeholder="Name" required />
+          </div>
+          <div class="field">
+            <input type="email" name="email" placeholder="Email" required />
+          </div>
+          <div class="field field--full">
+            <input type="text" name="brand" placeholder="Brand / website" />
+          </div>
+          <div class="field field--full">
+            <textarea name="message" rows="3" placeholder="What are you trying to build?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--solid">Send message</button>
+          <p class="form-note" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+
+    <!-- ===== 8. FOOTER ===== -->
+    <footer class="footer">
+      <div class="wrap footer__inner">
+        <a href="#hero" class="footer__logo">
+          <img src="assets/logo-white-icon.png" alt="Logo" />
+        </a>
+        <nav class="footer__nav" aria-label="Footer">
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#work">Work</a>
+          <a href="#consulting">Consulting</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="footer__social">
+          <a href="https://www.linkedin.com/in/soufiane-bouadi/" target="_blank" rel="noopener" aria-label="LinkedIn">LinkedIn</a>
+        </div>
+      </div>
+      <div class="wrap footer__base">
+        <span>© <span id="year"></span> Soufiane Bouadi. All rights reserved.</span>
+        <span>Built with strategy, AI &amp; taste.</span>
+      </div>
+    </footer>
+
+    <!-- Lightbox for portfolio creatives -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lightbox__close" id="lightboxClose" aria-label="Close">&#10005;</button>
+      <div class="lightbox__inner" id="lightboxInner"></div>
+    </div>
+
+  </main>
+
+  <!-- ============================================================
+       SCRIPTS — three.js, GSAP + ScrollTrigger, Lenis (CDN)
+  ============================================================ -->
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+
+  <!-- ============================================================
+       CONTACT FORM → Web3Forms (sends to bouadisoufiane@gmail.com).
+       Plain inline script (not a module) so it always runs and the
+       visitor NEVER leaves the page — success/error shows inline.
+  ============================================================ -->
+  <script>
+    (function () {
+      var form = document.querySelector(".contact__form");
+      if (!form) return;
+      var note = form.querySelector(".form-note");
+      var btn = form.querySelector('button[type="submit"]');
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var label = btn.textContent;
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+        note.classList.remove("is-error");
+        note.textContent = "";
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+        })
+          .then(function (r) { return r.json(); })
+          .then(function (data) {
+            if (data.success) {
+              form.reset();
+              note.textContent =
+                "Thanks for reaching out. I’ll get back to you very soon.";
+            } else {
+              note.classList.add("is-error");
+              note.textContent =
+                data.message ||
+                "Something went wrong. Please email bouadisoufiane@gmail.com.";
+            }
+          })
+          .catch(function () {
+            note.classList.add("is-error");
+            note.textContent =
+              "Network error. Please email me directly at bouadisoufiane@gmail.com.";
+          })
+          .then(function () {
+            btn.disabled = false;
+            btn.textContent = label;
+          });
+      });
+    })();
+  </script>
+</body>
+</html>

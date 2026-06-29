@@ -1,0 +1,20 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+
+# Logs & temp
+*.log
+*.tmp
+
+# Large backups / archives (e.g. the website export zip)
+*.zip
+
+# Editor / tooling config (machine-specific)
+.claude/
+.vscode/
+.idea/
+
+# Dependencies (future-proofing — none yet)
+node_modules/
